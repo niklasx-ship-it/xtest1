@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hej</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Diagnosis</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+        .panel {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <p>Hej.</p>
+    <h1>Medical Diagnosis Interface</h1>
+    <div class="container">
+        <div class="panel">
+            <h2>Patient X-Ray</h2>
+            <img id="xray-image" src="https://visualsonline.cancer.gov/retrieve.cfm?imageid=2343&dpi=300&fileformat=jpg" alt="Patient X-ray">
+        </div>
+        <div class="panel">
+            <h2>Diagnosis</h2>
+            <select id="diagnosis-select">
+                <option value="">Select a diagnosis...</option>
+                <option value="pneumonia">Pneumonia</option>
+                <option value="fracture">Bone Fracture</option>
+                <option value="normal">Normal</option>
+            </select>
+            <h3 style="margin-top: 20px;">Reference Image</h3>
+            <img id="illness-image" src="https://via.placeholder.com/400x400.png?text=Select+Diagnosis" alt="Illness reference image">
+        </div>
+    </div>
+
+    <script>
+        const diagnosisSelect = document.getElementById('diagnosis-select');
+        const illnessImage = document.getElementById('illness-image');
+
+        const illnessImages = {
+            pneumonia: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Pneumonia_x_ray.jpg',
+            fracture: 'https://placehold.co/400x400.png?text=Fracture+X-Ray',
+            normal: 'https://visualsonline.cancer.gov/retrieve.cfm?imageid=2343&dpi=300&fileformat=jpg'
+        };
+
+        diagnosisSelect.addEventListener('change', (event) => {
+            const selectedDiagnosis = event.target.value;
+            if (selectedDiagnosis && illnessImages[selectedDiagnosis]) {
+                illnessImage.src = illnessImages[selectedDiagnosis];
+            } else {
+                illnessImage.src = 'https://via.placeholder.com/400x400.png?text=Select+Diagnosis';
+            }
+        });
+    </script>
 </body>
 </html>
