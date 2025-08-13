@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hej</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Ray Diagnosis Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>Hej.</p>
+    <h1>X-Ray Diagnosis Game</h1>
+    <p>Use the X-ray to find the foreign object in the patient and diagnose it.</p>
+    <div id="game-container">
+        <div id="patient-container">
+            <img src="patient.png" alt="Patient" id="patient-image">
+            <div id="xray-viewer"></div>
+        </div>
+        <div id="diagnosis-container">
+            <input type="text" id="diagnosis-input" placeholder="Enter your diagnosis">
+            <button id="diagnose-button">Diagnose</button>
+        </div>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
